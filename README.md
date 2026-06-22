@@ -1,8 +1,10 @@
 # CV Foundry
 
-Este repo es mi herramienta personal para mantener mi CV en español e inglés sin volverme loco entre archivos sueltos, PDFs generados y versiones desactualizadas.
+Este repo muestra cómo usar R/RStudio para renderizar una plantilla de CV hecha en LaTeX, como las que normalmente se editan en Overleaf.
 
-La idea nació de un flujo bastante común: tomar una plantilla bonita de LaTeX tipo Overleaf, adaptarla a mi perfil, renderizarla desde RStudio/R y mantener una versión en inglés con ayuda de una skill local. No es solo “un CV en LaTeX”; es un flujo reproducible para editar, traducir y generar ambos PDFs de forma ordenada.
+En mi caso, uso una plantilla que me gusta, la tengo adaptada a mi perfil y la renderizo desde RStudio/R para generar el CV en español y en inglés. La plantilla actual no es obligatoria: se puede cambiar por otra plantilla LaTeX de Overleaf o por una versión propia, siempre que se ajusten los archivos de entrada y las rutas necesarias.
+
+El repo también incluye una skill local para ayudar a pasar contenido del español al inglés. Esa traducción no reemplaza una revisión humana: sirve como punto de partida para mantener tono profesional, preservar datos y no romper comandos LaTeX, pero siempre conviene revisar el resultado antes de usarlo.
 
 El proyecto mantiene dos versiones del mismo CV:
 
@@ -13,10 +15,12 @@ El proyecto mantiene dos versiones del mismo CV:
 
 ## Qué problema resuelve
 
+- Permite renderizar desde R una plantilla LaTeX estilo Overleaf.
+- Usa mi plantilla actual de CV, pero la estructura permite reemplazarla por otra.
 - El contenido no queda mezclado entre español e inglés.
 - Los PDFs generados no ensucian la raíz del proyecto.
 - El render se puede repetir desde RStudio/R con comandos claros.
-- La traducción al inglés tiene reglas explícitas para no inventar logros ni romper comandos LaTeX.
+- La traducción al inglés tiene reglas explícitas, aunque sigue necesitando revisión humana.
 - `resume.tex` sigue existiendo como compatibilidad para la versión en español.
 
 ## Estructura
@@ -75,7 +79,7 @@ Para traducciones, seguí el criterio de la skill local:
 .opencode/skills/cv-latino-english-translator/
 ```
 
-La regla principal: traducir con naturalidad profesional, pero sin inventar logros, cambiar fechas, alterar nombres de empresas o romper comandos LaTeX.
+La regla principal: traducir con naturalidad profesional, pero sin inventar logros, cambiar fechas, alterar nombres de empresas o romper comandos LaTeX. Aun así, la versión en inglés debe revisarse antes de publicarla o enviarla.
 
 ## Cómo generar los PDFs
 
