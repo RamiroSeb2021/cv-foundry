@@ -1,0 +1,95 @@
+schema: spec-driven
+
+project: ramirezcv
+artifact_store:
+  mode: hybrid
+  openspec: true
+  engram: true
+
+context: |
+  Tech stack: LaTeX CV sources with R automation; custom russell.cls; local Roboto/FontAwesome fonts.
+  Architecture: resume.tex imports editable cv/*.tex sections and cv/references.bib.
+  Build: Compilar_Archivos.R runs tinytex::latexmk(engine = "xelatex") against resume.tex.
+  Verification: safe static check is Rscript parse of R scripts; full compile has PDF/open/install side effects unless guarded.
+  Goal: evolve the repo to maintain Spanish and English CV content and render both language PDFs.
+
+strict_tdd: false
+strict_tdd_reason: No dedicated test runner or TDD marker/config was detected; only parse/build verification exists.
+
+testing:
+  detected: "2026-06-22"
+  strict_tdd: false
+  test_runner:
+    available: false
+    framework: none
+    command: ""
+  verification:
+    safe_static_check: "Rscript -e \"parse(file = 'Compilar_Archivos.R'); parse(file = 'paquetes_Necesarios.R')\""
+    build_command: "Rscript Compilar_Archivos.R"
+    build_notes: "Compiles resume.tex with xelatex via tinytex::latexmk but currently executes a top-level compilar_cv(...) call and may open the generated PDF. paquetes_Necesarios.R can install TinyTeX/TeX packages."
+  layers:
+    unit:
+      available: false
+      tool: ""
+    integration:
+      available: false
+      tool: ""
+    e2e:
+      available: false
+      tool: ""
+  coverage:
+    available: false
+    command: ""
+  quality:
+    linter:
+      available: false
+      command: ""
+    type_checker:
+      available: false
+      command: ""
+    formatter:
+      available: false
+      command: ""
+
+rules:
+  proposal:
+    - Preserve existing personal data exactly unless the user explicitly requests content changes.
+    - Include rollback plan for file-layout or build-script changes.
+    - Keep bilingual CV work scoped to source structure, translation workflow, and PDF rendering.
+  specs:
+    - Use Given/When/Then scenarios.
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY).
+    - Specify Spanish and English content ownership, translation boundaries, and expected PDF outputs.
+  design:
+    - Document the bilingual source layout and compile flow before changing files.
+    - Use the project-local cv-latino-english-translator skill for Spanish-to-English CV text translation.
+    - Treat LaTeX commands, names, dates, institutions, tools, paths, and URLs as facts to preserve.
+  tasks:
+    - Group tasks by source restructuring, translation, rendering, and verification.
+    - Keep each task small enough to review under the 400-line budget when practical.
+  apply:
+    tdd: false
+    test_command: "Rscript -e \"parse(file = 'Compilar_Archivos.R'); parse(file = 'paquetes_Necesarios.R')\""
+    notes:
+      - Follow existing LaTeX/R patterns and UTF-8 encoding.
+      - Do not run install scripts or PDF-opening compile paths without understanding side effects.
+  verify:
+    test_command: "Rscript -e \"parse(file = 'Compilar_Archivos.R'); parse(file = 'paquetes_Necesarios.R')\""
+    build_command: "Rscript Compilar_Archivos.R"
+    coverage_threshold: 0
+    notes:
+      - Report whether full PDF compilation was run or skipped because of side effects.
+  archive:
+    - Warn before merging destructive deltas.
+    - Preserve archived changes as an audit trail.
+
+review:
+  chained_pr_strategy: ask-always
+  review_budget_lines: 400
+
+skills:
+  registry: .atl/skill-registry.md
+  relevant:
+    - name: cv-latino-english-translator
+      path: .opencode/skills/cv-latino-english-translator/SKILL.md
+      purpose: Translate Spanish CV content into natural professional English while preserving LaTeX structure and facts.
