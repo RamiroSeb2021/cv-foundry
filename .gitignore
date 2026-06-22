@@ -1,0 +1,36 @@
+# R / RStudio local state
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# LaTeX generated auxiliary files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# Generated CV PDFs
+resume.pdf
+resume_*.pdf
+RamirezCV.pdf
+RamirezCV_*.pdf
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+
+# Gentle AI local cache/temp files
+.atl/*.tmp
+.atl/*.cache.json
