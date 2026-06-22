@@ -5,6 +5,7 @@ Guia operativa para agentes de codigo que trabajen en este repositorio.
 ## Proposito y Realidad Actual
 
 - Este repositorio contiene el CV bilingue de Juan Sebastian Ramirez Ayala en LaTeX.
+- El concepto del repo es un flujo tipo `Overleaf-to-RStudio bilingual CV`: plantilla LaTeX estilo Overleaf, render reproducible desde R/RStudio y traduccion asistida por skill local.
 - Las entradas principales son `resume-es.tex` y `resume-en.tex`; `resume.tex` queda como wrapper compatible para la version en espanol.
 - El contenido editable vive separado por idioma en `cv/es/*.tex` y `cv/en/*.tex`.
 - La compilacion esta automatizada desde R mediante `scripts/Compilar_Archivos.R`, que usa `tinytex::latexmk()` con engine `xelatex`.
@@ -33,6 +34,8 @@ Guia operativa para agentes de codigo que trabajen en este repositorio.
 | `RamirezCV.Rproj` | Proyecto RStudio; configura UTF-8 y 2 espacios por tab. |
 | `.gitignore` | Ignora archivos locales de R/RStudio (`.Rproj.user`, `.Rhistory`, `.RData`, `.Ruserdata`). |
 | `.atl/skill-registry.md` | Registro generado de skills; no es documentacion funcional del CV. |
+| `.opencode/skills/cv-latino-english-translator/` | Skill local para traducir contenido del CV de espanol a ingles profesional sin inventar hechos ni romper LaTeX. |
+| `README.md` | Documentacion humana del flujo Overleaf/RStudio/bilingue. |
 
 ## Comandos Verificados
 
@@ -66,6 +69,7 @@ Motivo:
 
 - Antes de afirmar que existe un archivo, comando o salida generada, inspecciona el arbol actual.
 - Para editar contenido del CV, modifica `cv/es/*.tex` y replica/traduce el cambio en `cv/en/*.tex` cuando corresponda; evita tocar `russell.cls` salvo que el cambio sea de plantilla/estilo global.
+- Para traducir al ingles, usa la skill local `cv-latino-english-translator`; preserva hechos, fechas, empresas, instituciones, tecnologias, URLs y comandos LaTeX.
 - No ejecutes instalaciones, compilaciones, aperturas de PDF ni limpieza de artefactos sin entender los efectos secundarios del script.
 - No borres PDFs, logs, fuentes ni archivos `.tex` generados/actuales sin pedido explicito del usuario.
 - No hagas commits salvo que el usuario lo pida explicitamente.
