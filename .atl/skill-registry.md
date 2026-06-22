@@ -6,6 +6,7 @@ Last updated: 2026-06-22
 
 ## Sources scanned
 
+- .opencode/skills
 - /home/sebastian-ramirez/.config/opencode/skills
 - /home/sebastian-ramirez/.claude/skills
 - /home/sebastian-ramirez/.gemini/skills
@@ -30,6 +31,7 @@ Last updated: 2026-06-22
 | `comment-writer` | Write warm, direct collaboration comments. Trigger: PR feedback, issue replies, reviews, Slack messages, or GitHub comments. | user | `/home/sebastian-ramirez/.config/opencode/skills/comment-writer/SKILL.md` |
 | `create-agents-md` | Trigger: AGENTS.md, agent guidelines, repository instructions. Create or rewrite AGENTS.md from repo evidence and examples. | user | `/home/sebastian-ramirez/.config/opencode/skills/create-agents-md/SKILL.md` |
 | `create-readme` | Trigger: README, crear README, mejorar README, onboarding del repo. Crea o reescribe el README principal con claridad. | user | `/home/sebastian-ramirez/.config/opencode/skills/create-readme/SKILL.md` |
+| `cv-latino-english-translator` | Trigger: traducir CV, Spanish to English CV, resume translation, Latino English. Translate technical CV content into natural professional English. | project | `/storage/backups/backup-d-antes-linux/PPP/Sebastian/RamirezCV/.opencode/skills/cv-latino-english-translator/SKILL.md` |
 | `dependency-supply-chain-security` | Trigger: npm, pnpm, pip, dependency install, package audit, repo link, postinstall, supply chain. Review install risk first. | user | `/home/sebastian-ramirez/.config/opencode/skills/dependency-supply-chain-security/SKILL.md` |
 | `factor-06-processes` | Trigger: factor 06, processes, twelve-factor processes. Guide stateless share-nothing process design and audits. | user | `/home/sebastian-ramirez/.config/opencode/skills/factor-06-processes/SKILL.md` |
 | `factor-07-port-binding` | Trigger: factor 07, port binding, twelve-factor port binding. Guide self-contained service export design and audits. | user | `/home/sebastian-ramirez/.config/opencode/skills/factor-07-port-binding/SKILL.md` |
