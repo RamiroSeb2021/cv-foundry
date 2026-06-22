@@ -1,8 +1,13 @@
 # Compilación CV -----------------------------------------------------------
 # API explícita para renderizar el CV por idioma.
 # Este archivo no debe compilar ni abrir PDFs al cargarse con source() o parse().
-# Los efectos secundarios de instalación permanecen en paquetes_Necesarios.R y
-# sólo deben ejecutarse de forma explícita por quien mantenga el proyecto.
+# Los efectos secundarios de instalación permanecen en scripts/paquetes_Necesarios.R
+# y sólo deben ejecutarse de forma explícita por quien mantenga el proyecto.
+#
+# Estructura esperada:
+# - cv/es/*.tex y cv/en/*.tex: contenido editable del CV.
+# - resume-es.tex y resume-en.tex: entradas LaTeX por idioma.
+# - outputs/es y outputs/en: PDFs finales generados por estas funciones.
 
 resolver_path_base <- function(path_ = "") {
   # Detectar OS
@@ -39,13 +44,17 @@ resolver_path_base <- function(path_ = "") {
   normalizePath(base_path, mustWork = TRUE)
 }
 
-validar_entrada_cv <- function(base_path, main_tex) {
+validar_entrada_cv <- function(base_path, main_tex, output_dir) {
   if (missing(main_tex) || !nzchar(main_tex)) {
     stop("Debes indicar explícitamente el archivo .tex principal en main_tex.")
   }
 
   if (!grepl("\\.tex$", main_tex)) {
     stop("main_tex debe apuntar a un archivo .tex: ", main_tex)
+  }
+
+  if (missing(output_dir) || !nzchar(output_dir)) {
+    stop("Debes indicar explícitamente la carpeta de salida en output_dir.")
   }
 
   # Chequeos mínimos de estructura
@@ -56,9 +65,19 @@ validar_entrada_cv <- function(base_path, main_tex) {
   }
 }
 
-compilar_cv <- function(path_ = "", main_tex, open_pdf = FALSE) {
+limpiar_temporales_latex <- function(base_name) {
+  extensiones <- c(
+    "aux", "bbl", "bcf", "blg", "fdb_latexmk", "fls", "log", "out",
+    "run.xml", "synctex.gz", "toc", "xdv"
+  )
+
+  archivos <- file.path(getwd(), paste0(base_name, ".", extensiones))
+  unlink(archivos[file.exists(archivos)], force = TRUE)
+}
+
+compilar_cv <- function(path_ = "", main_tex, output_dir, open_pdf = FALSE) {
   base_path <- resolver_path_base(path_)
-  validar_entrada_cv(base_path, main_tex)
+  validar_entrada_cv(base_path, main_tex, output_dir)
 
   # Guardar wd actual y restaurarlo al final
   old_wd <- getwd()
@@ -79,7 +98,10 @@ compilar_cv <- function(path_ = "", main_tex, open_pdf = FALSE) {
   
   # Compilar con XeLaTeX (recomendado por las fuentes Roboto/FontAwesome)
   # latexmk deja todo bien resuelto (refs, multiple passes, etc.)
-  out_pdf <- sub("\\.tex$", ".pdf", basename(main_tex))
+  base_name <- sub("\\.tex$", "", basename(main_tex))
+  generated_pdf <- paste0(base_name, ".pdf")
+  output_path <- file.path(output_dir, generated_pdf)
+  dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
   
   tinytex::latexmk(
     file = main_tex,
@@ -87,13 +109,17 @@ compilar_cv <- function(path_ = "", main_tex, open_pdf = FALSE) {
     clean = TRUE
   )
   
-  if (!file.exists(out_pdf)) {
-    stop("No se generó el PDF esperado: ", out_pdf,
+  if (!file.exists(generated_pdf)) {
+    stop("No se generó el PDF esperado: ", generated_pdf,
          "\nRevisa el log .log en el directorio para ver el error exacto.")
   }
+
+  file.copy(generated_pdf, output_path, overwrite = TRUE)
+  unlink(generated_pdf, force = TRUE)
+  limpiar_temporales_latex(base_name)
   
   if (isTRUE(open_pdf)) {
-    pdf_path <- normalizePath(out_pdf)
+    pdf_path <- normalizePath(output_path)
     os <- Sys.info()[["sysname"]]
 
     if (os == "Linux" && nzchar(Sys.which("xdg-open"))) {
@@ -103,16 +129,26 @@ compilar_cv <- function(path_ = "", main_tex, open_pdf = FALSE) {
     }
   }
   
-  message("✅ Compilado correctamente: ", normalizePath(out_pdf))
-  invisible(normalizePath(out_pdf))
+  message("✅ Compilado correctamente: ", normalizePath(output_path))
+  invisible(normalizePath(output_path))
 }
 
 render_es <- function(path_ = "", open_pdf = FALSE) {
-  compilar_cv(path_ = path_, main_tex = "resume-es.tex", open_pdf = open_pdf)
+  compilar_cv(
+    path_ = path_,
+    main_tex = "resume-es.tex",
+    output_dir = file.path("outputs", "es"),
+    open_pdf = open_pdf
+  )
 }
 
 render_en <- function(path_ = "", open_pdf = FALSE) {
-  compilar_cv(path_ = path_, main_tex = "resume-en.tex", open_pdf = open_pdf)
+  compilar_cv(
+    path_ = path_,
+    main_tex = "resume-en.tex",
+    output_dir = file.path("outputs", "en"),
+    open_pdf = open_pdf
+  )
 }
 
 render_all <- function(path_ = "", open_pdf = FALSE) {
@@ -123,6 +159,7 @@ render_all <- function(path_ = "", open_pdf = FALSE) {
 }
 
 # Ejemplos explícitos, sin ejecución automática:
+# source("scripts/Compilar_Archivos.R")
 # render_es(path_ = "/storage/backups/backup-d-antes-linux/PPP/Sebastian/RamirezCV")
 # render_en(path_ = "/storage/backups/backup-d-antes-linux/PPP/Sebastian/RamirezCV")
 # render_all(path_ = "/storage/backups/backup-d-antes-linux/PPP/Sebastian/RamirezCV", open_pdf = FALSE)

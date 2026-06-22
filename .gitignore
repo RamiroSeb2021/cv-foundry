@@ -24,6 +24,7 @@ resume-*.pdf
 resume_*.pdf
 RamirezCV.pdf
 RamirezCV_*.pdf
+outputs/
 
 # OS / editor noise
 .DS_Store

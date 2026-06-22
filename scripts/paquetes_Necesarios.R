@@ -63,4 +63,3 @@ pkgs <- unique(pkgs)
 tinytex::tlmgr_install(pkgs)
 # 
 
-
