@@ -28,6 +28,7 @@
 %-------------------------------------------------------------------------------
 % Needed to make fixed length table
 \RequirePackage{array}
+\RequirePackage{longtable}
 % Needed to handle list environment
 \RequirePackage{enumitem}
 % Needed to handle text alignment
@@ -61,8 +62,11 @@
 % Needed to deal a paragraphs
 \RequirePackage{parskip}
 % Needed to deal hyperlink
-\RequirePackage[hidelinks,unicode,pdfpagelabels=false]{hyperref}
+\RequirePackage[unicode,pdfpagelabels=false]{hyperref}
 \hypersetup{%
+  colorlinks=true,
+  urlcolor=russell-skyblue,
+  linkcolor=russell-skyblue,
   pdftitle={},
   pdfauthor={},
   pdfsubject={},

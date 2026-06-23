@@ -5,96 +5,66 @@
 
 \raggedright
 
+\newenvironment{cvprojectskills}{%
+  \vspace{\acvSectionContentTopSkip}%
+  \vspace{-2.0mm}%
+  \setlength\LTleft{0pt}%
+  \setlength\LTright{0pt}%
+  \setlength\LTpre{0pt}%
+  \setlength\LTpost{0pt}%
+  \setlength\tabcolsep{0pt}%
+  \begin{longtable}{@{}p{0.28\textwidth}@{\hspace{0.02\textwidth}}p{0.70\textwidth}@{}}%
+}{%
+  \end{longtable}%
+}
+
+\newcommand{\cvprojectrow}[2]{%
+  \skilltypestyle{#1} & \skillsetstyle{#2} \\[0.35em]%
+}
+
+%-------------------------------------------------------------------------------
+% SUBSECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsubsection{Links}
+\begin{cvprojectskills}
+\cvprojectrow{Profiles}{Repositories: \href{https://github.com/RamiroSeb2021}{GitHub} \quad\textbar\quad Publications: \href{https://rpubs.com/juanayaramiro}{RPubs}}
+\end{cvprojectskills}
+
+%-------------------------------------------------------------------------------
+% SUBSECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsubsection{Achievements and publications}
+\begin{cvprojectskills}
+\cvprojectrow{Springer: DOE}{\textbf{Academic publication:} Shiny app and R package for experimental design and sample size calculation. \href{https://link.springer.com/chapter/10.1007/978-3-032-18455-9_2}{View publication} \quad\textbar\quad \href{https://ramirsebs-200325-js.shinyapps.io/front_app_dexp/}{View app}.}
+\end{cvprojectskills}
+
 %-------------------------------------------------------------------------------
 % SUBSECTION TITLE
 %-------------------------------------------------------------------------------
 \cvsubsection{Featured projects}
-
-\begin{cvskills}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}Saber 11 (ICFES)\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Sociodemographic performance analysis:} exploration, cleaning, and analysis of sociodemographic and institutional factors associated with scores, with visualizations and findings-oriented interpretation for decision-making.}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}Linear regression\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Models with climate variables:} built and interpreted linear regression models to explain a response variable from climate covariates, including diagnosis of assumptions, outliers, and influence.}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}GLM Gamma + splines\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Nonlinear and weighted modeling:} fitted generalized linear models (Gamma) with splines and weighting, compared alternatives, and evaluated fit/interpretability for business scenarios.}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}DOE: Shiny + R package\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{App and package for experimental design:} developed a Shiny application and an R package for sample size calculation, aimed at use by non-technical users.}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}ICFES: AE + RF\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Final score prediction:} pipeline with autoencoders (latent representations) and Random Forest to estimate scores, with metric-based evaluation and latent variable analysis; developed in the context of projects with SAS and Python.}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}Aeronautical regulations RAG\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Query system with LangChain/LangGraph:} ingestion of regulatory PDFs, embeddings, and vector search for contextual retrieval (RAG), with answer generation and source traceability.}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}Psychological QA (LLMs)\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{QA assistant and quality evaluation:} prototype question-answering system with LLMs, focused on hallucination evaluation, answer quality control, and safety considerations.}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}Veracity detection\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Sequential models with video:} extraction of facial features (OpenFace/LibreFace) and training of a BiLSTM model in PyTorch to classify temporal patterns associated with veracity/deception.}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}ARPRO\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Analytics for consumption vs. budget:} supported data analytics consulting for consumption and budget control and monitoring, information structuring, and modeling for forecasting and decision-making.}}
-
-\end{cvskills}
+\begin{cvprojectskills}
+\cvprojectrow{Saber 11 (ICFES)}{\textbf{Sociodemographic performance analysis:} exploration, cleaning, and analysis of sociodemographic and institutional factors associated with scores, with visualizations and findings-oriented interpretation for decision-making.}
+\cvprojectrow{Linear regression}{\textbf{Models with climate variables:} built and interpreted linear regression models to explain a response variable from climate covariates, including diagnosis of assumptions, outliers, and influence.}
+\cvprojectrow{GLM Gamma + splines}{\textbf{Nonlinear and weighted modeling:} fitted generalized linear models (Gamma) with splines and weighting, compared alternatives, and evaluated fit/interpretability for business scenarios.}
+\cvprojectrow{ICFES: AE + RF}{\textbf{Final score prediction:} pipeline with autoencoders (latent representations) and Random Forest to estimate scores, with metric-based evaluation and latent variable analysis; developed in the context of projects with SAS and Python.}
+\cvprojectrow{Aeronautical regulations RAG}{\textbf{Query system with LangChain/LangGraph:} ingestion of regulatory PDFs, embeddings, and vector search for contextual retrieval (RAG), with answer generation and source traceability.}
+\cvprojectrow{Psychological QA (LLMs)}{\textbf{QA assistant and quality evaluation:} prototype question-answering system with LLMs, focused on hallucination evaluation, answer quality control, and safety considerations.}
+\cvprojectrow{Veracity detection}{\textbf{Sequential models with video:} extraction of facial features (OpenFace/LibreFace) and training of a BiLSTM model in PyTorch to classify temporal patterns associated with veracity/deception.}
+\cvprojectrow{ARPRO}{\textbf{Analytics for consumption vs. budget:} supported data analytics consulting for consumption and budget control and monitoring, information structuring, and modeling for forecasting and decision-making.}
+\end{cvprojectskills}
 
 %-------------------------------------------------------------------------------
 % SUBSECTION TITLE
 %-------------------------------------------------------------------------------
 \cvsubsection{Other relevant projects}
-
-\begin{cvskills}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}Tax payment (IRS)\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Tax Data Analysis Demo:} Python demo notebook for preprocessing, visualization, and implementation of models that estimate tax payment probability with IRS-like data (Kaggle).}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}Invoice automation (PDF)\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Text extraction and structuring:} automated information extraction from PDF invoices to generate clean and structured data; advanced cleaning and pattern detection to enable analytics and modeling.}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}Bogotá mobility\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Descriptive analysis and findings:} participated in mobility data analysis focused on patterns and relationships to support exploration and decision-making (institutional source).}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}NHANES\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Data cleaning and quality:} cleaned and standardized variables, handled missing values, and validated consistency to enable reliable analysis in health surveys (NHANES).}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}Insurance EDA\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Exploration and inference:} EDA on insurance data, construction of descriptive and inferential metrics, and generation of useful insights for risk and behavior analysis (Kaggle).}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}Multivariate + Shiny\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Dimensionality reduction and clustering:} applied multivariate techniques (e.g., clustering and dimensionality reduction) and developed a Shiny app for interactive exploration of results (case: residential sectors in Switzerland).}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}Frequentist vs. Bayes\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Methodological comparison:} contrasted frequentist and Bayesian inferential approaches on a standard case (Iris), with interpretation of results and assumptions.}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}DB modeling (Oracle)\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Design and implementation:} database modeling (UML) and implementation in Oracle SQL for an event scheduling/management system, with process and query automation.}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}NLP: Sentiment\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{\textbf{Sentiment analysis:} built a Python pipeline for preprocessing, vectorization, and sentiment analysis, with visualizations for executive-level reading of results (Kaggle).}}
-
-  \cvskill
-    {\begin{minipage}[t]{0.28\linewidth}Portfolio\end{minipage}}
-    {\parbox[t]{0.72\linewidth}{Repositories: \href{https://github.com/RamiroSeb2021}{GitHub} \quad\textbar\quad Publications: \href{https://rpubs.com/juanayaramiro}{RPubs}}}
-
-\end{cvskills}
+\begin{cvprojectskills}
+\cvprojectrow{Tax payment (IRS)}{\textbf{Tax Data Analysis Demo:} Python demo notebook for preprocessing, visualization, and implementation of models that estimate tax payment probability with IRS-like data (Kaggle).}
+\cvprojectrow{Invoice automation (PDF)}{\textbf{Text extraction and structuring:} automated information extraction from PDF invoices to generate clean and structured data; advanced cleaning and pattern detection to enable analytics and modeling.}
+\cvprojectrow{Bogotá mobility}{\textbf{Descriptive analysis and findings:} participated in mobility data analysis focused on patterns and relationships to support exploration and decision-making (institutional source).}
+\cvprojectrow{NHANES}{\textbf{Data cleaning and quality:} cleaned and standardized variables, handled missing values, and validated consistency to enable reliable analysis in health surveys (NHANES).}
+\cvprojectrow{Insurance EDA}{\textbf{Exploration and inference:} EDA on insurance data, construction of descriptive and inferential metrics, and generation of useful insights for risk and behavior analysis (Kaggle).}
+\cvprojectrow{Multivariate + Shiny}{\textbf{Dimensionality reduction and clustering:} applied multivariate techniques (e.g., clustering and dimensionality reduction) and developed a Shiny app for interactive exploration of results (case: residential sectors in Switzerland).}
+\cvprojectrow{Frequentist vs. Bayes}{\textbf{Methodological comparison:} contrasted frequentist and Bayesian inferential approaches on a standard case (Iris), with interpretation of results and assumptions.}
+\cvprojectrow{DB modeling (Oracle)}{\textbf{Design and implementation:} database modeling (UML) and implementation in Oracle SQL for an event scheduling/management system, with process and query automation.}
+\cvprojectrow{NLP: Sentiment}{\textbf{Sentiment analysis:} built a Python pipeline for preprocessing, vectorization, and sentiment analysis, with visualizations for executive-level reading of results (Kaggle).}
+\end{cvprojectskills}
